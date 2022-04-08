@@ -25,7 +25,7 @@ jobs = [
 ]
 
 total_pay = sum([j['hours']*j['pay'] for j in jobs])
-#print(total_pay)
+print(total_pay)
 
 # A student can be enrolled to a class only if the class is not full and the 
 # class schedule does not conflict with her current schedule.
@@ -38,13 +38,14 @@ can_enroll = not (class_full and sched_conflict)
 can_enroll = not class_full or not sched_conflict
 #print(can_enroll)
 
-# A product offer can be applied only if people buys more than 2 items, and the 
+# A product offer can be applied only if people buy more than 2 items, and the 
 # offer has not expired. Premium members do not need to buy a specific amount 
 # of products.
-items_bought = 1 #number of items bought by a single customer
-offer_expired = True #True if the offer is expired
+items_bought = 3 #number of items bought by a single customer
+offer_current = False #True if the offer is expired
+premium_member = False
 
-discount_applies = offer_expired and items_bought > 2
+discount_applies = offer_current and (items_bought > 2 or premium_member)
 #print(discount_applies)
 
 # Create a variable that holds a boolean value for each of the following conditions:
@@ -58,11 +59,16 @@ username = 'codeup'
 password = 'notastrongpassword'
 
 password_length_ok = len(password) >= 5
+#print(password_length_ok)
 username_length_ok = len(username) <= 20
-pass_usrname_equal = len(password)==len(username)
+#print(username_length_ok)
+pass_usrname_equal = password != username
+#print(pass_usrname_equal)
 # easier to do a multistep with the bonus
 usrname_whitespace = ' ' in (username[0], username[-1])
 password_whitespace = ' ' in (username[0], username[-1])
 #no_whitespace is true if there is no whitespace beginning or ending the username or password
 no_whitespace = not (usrname_whitespace or password_whitespace)
 #print(no_whitespace)
+pass_ok = password_length_ok and username_length_ok and pass_usrname_equal and no_whitespace
+print(pass_ok)
