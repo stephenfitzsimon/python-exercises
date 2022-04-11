@@ -131,17 +131,31 @@ print(f"2b. {len(prefer_light)} student prefer light coffee, {len(prefer_medium)
 
 #    How many types of each pet are there?
 types_of_pets = ['cat', 'dog', 'horse']
-print("3. ")
+pet_nos = [0,0,0]
+pet_lists = [s['pets'] for s in students]
+pet_objs = []
+for list in pet_lists:
+    for p in list:
+        pet_objs.append(p)
+for p in pet_objs:
+    if p['species'] == 'cat':
+        pet_nos[0] += 1
+    elif p['species'] == 'dog':
+        pet_nos[1] += 1
+    else:
+        pet_nos[2] += 1
+
+print(f"3. There are {pet_nos[0]} cats, {pet_nos[1]} dogs and {pet_nos[2]} horses.\n")
 
 #    How many grades does each student have? Do they all have the same number of grades?
 num_grades_per_student = [len(s['grades']) for s in students]
-print(f"4a. The distribution of the number of grades is {num_grades_per_student}\n")
 grade_set = set(num_grades_per_student)
 same_num_grades = None
 if len(grade_set)==1:
     same_num_grades=True
 else:
     same_num_grades=False
+print(f"4a. The distribution of the number of grades is {num_grades_per_student}\n")
 print(f"4b. 'Every student has the same number of grades' is a {same_num_grades} statement\n")
 
 #    What is each student's grade average?
@@ -238,6 +252,17 @@ dark_coffee_range = max(dark_coffee_avgs) - min(dark_coffee_avgs)
 print(f"14. The range of grades for dark coffee drinkers is {dark_coffee_range}.\n")
 
 #    What is the average number of pets for medium coffee drinkers?
+medium_coffee_drinkers = [s for s in students if s['coffee_preference']=='medium']
+num_of_pets = [len(s['pets']) for s in medium_coffee_drinkers]
+avg_pet_med_drink = sum(num_of_pets)/len(medium_coffee_drinkers)
+print(f"15. The average number of pets among medium coffee drinkers is {avg_pet_med_drink}\n")
+
+
 #    What is the most common type of pet for web development students?
+wd_students = [s for s in students if s['course']=='web development']
+
 #    What is the average name length?
+name_lengths = [len(s['student']) for s in students]
+print(f"17. The average name length of students is {get_avg(name_lengths)} chars.\n")
+
 #    What is the highest pet age for light coffee drinkers?

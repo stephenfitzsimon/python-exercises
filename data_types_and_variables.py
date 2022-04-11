@@ -10,7 +10,7 @@ movies = [
 ]
 
 total_price = sum([m['days']*3 for m in movies])
-#print(total_price)
+print(total_price)
 
 # Suppose you're working as a contractor for 3 companies: Google, Amazon and 
 # Facebook, they pay you a different rate per hour. Google pays 400 dollars 
