@@ -8,7 +8,7 @@ def is_monday(day):
         return "You did not enter Monday"
 
 user_in = input("1a. Enter a day of the week: ")
-print(is_monday(user_in))
+#print(is_monday(user_in))
 
 #b.
 def is_weekday(day):
@@ -19,17 +19,27 @@ def is_weekday(day):
     else:
         return "That is not a day"
 
-user_in = input("1b. enter a day of the week: ")
-print(is_weekday(user_in))
+#can also use a loop to ensure a valid weekday
+def valid_day():
+    days = ('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday')
+    while True:
+        user_in = input("1b. Enter a day of the week: ")
+        if user_in.lower() in days:
+            return user_in
+        else:
+            print("Not a a day of the week")
+
+#user_in = valid_day()
+print(is_weekday(valid_day()))
 
 #c.
-def paycheck_calculator(hours, wage):
+def paycheck_calculator(hours, wage, overtime_multiplier=1.5):
     if hours>40:
-        return 40*wage+(hours-40)*wage*(1.5)
+        return 40*wage+(hours-40)*wage*(overtime_multiplier)
     else:
         return wage*hours
 
-print(paycheck_calculator(42.5, 2))
+print(f"1c. {paycheck_calculator(30, 2)}")
 
 #2.
 #a.
@@ -49,7 +59,7 @@ while i >= -10:
     i -= 5
 
 i = 2
-while i <1000000:
+while i < 1000000:
     print(i)
     i = i**2
 
@@ -173,7 +183,7 @@ def get_input_4():
     while True:
         user_in = input("4. What number would you like to go up to? ")
         if user_in.isnumeric() and int(user_in) > 0:
-            square_and_cube(int(user_in)+1)
+            square_and_cube(int(user_in)+1) # +1 so that it includes the user input
             user_in = input("Type n to stop, any key to continue: ")
             if user_in.lower()=='n':
                 break
@@ -258,8 +268,8 @@ def print_by_genre(b_dictionary, genre):
     books_in_genre = [b for b in b_dictionary if b['genre']==genre]
     max_length = 24 #arbitrarily chosen max length
     print_msg = "\n"
-    print_msg += f"{'Title '.ljust(max_length)}|{' Author '.ljust(max_length)}|{' Genre '.ljust(max_length)}\n"
-    print_msg += ''.ljust(max_length,'-') + '|' +''.ljust(max_length,'-') + '|' +''.ljust(max_length,'-') +'\n'
+    print_msg += f"{'Title '.ljust(max_length)}|{' Author '.ljust(max_length+1)}|{' Genre '.ljust(max_length)}\n"
+    print_msg += ''.ljust(max_length,'-') + '|' +''.ljust(max_length+1,'-') + '|' +''.ljust(max_length,'-') +'\n'
     for b in books_in_genre:
         print_msg += f"{b['title'].title().ljust(max_length)}| {b['author'].title().ljust(max_length)}| {b['genre'].ljust(max_length)}\n"
     print(print_msg)
