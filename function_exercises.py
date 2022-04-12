@@ -173,8 +173,16 @@ def col_index(cols_string):
     for i, val in enumerate(ascii_values):
         sum+=val*(26**(i))
         #print(f"{val}*(26**{i})={sum}")
-    print(f"{cols_string} = {sum}")
+    #print(f"{cols_string} = {sum}")
     return sum
+
+#print(col_index('A'))
+#print(col_index('Z'))
+#print(col_index('AA'))
+#print(col_index('ZZ'))
+#print(col_index('AAA'))
+#print(col_index('ZZZ'))
+#print(col_index('AAAA'))
 
     
 
