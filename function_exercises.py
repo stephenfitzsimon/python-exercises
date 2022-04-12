@@ -158,19 +158,22 @@ def twentyfourto12(time_string):
 #print(twentyfourto12("23:55"))
 #print(twentyfourto12("0:50"))
 
-#Bonus 2 this does not work
+#Bonus 2 this should work?
 def col_index(cols_string):
     #returns the index of the columns from a excel spreadsheet
     #use ASCII values of the letters
+    #this is similar to base 26 -> base 10?
+    #make the string into a list
     cols_string = list(cols_string)
-    #cols_string.reverse()
-    sum = 0
-    for i, letter in enumerate(cols_string):
-        #print(f"{i}, {letter}, {ord(letter)-64}")
-        if i==0:
-            sum += ord(letter)-64
-        else:
-            sum += 26**(i) + ord(letter[0])-64
+    #reverse the string so that the indices are in the correct exponent position
+    cols_string.reverse()
+    #get a list of positional vals for the letters
+    ascii_values = [ord(c)-64 for c in cols_string]
+    sum=0
+    for i, val in enumerate(ascii_values):
+        sum+=val*(26**(i))
+        #print(f"{val}*(26**{i})={sum}")
+    print(f"{cols_string} = {sum}")
     return sum
 
     
@@ -179,8 +182,8 @@ alphabet_list = [chr(c+65) for c in range(26)]
 #list to check
 combos_2 = alphabet_list + [c+d for c in alphabet_list for d in alphabet_list]
 combos_3 = combos_2 + [c+d+e for c in alphabet_list for d in alphabet_list for e in alphabet_list]
-list_checking = combos_2
+list_checking = combos_3
 correct = [x for x in range(1,len(list_checking)+1)]
 output = [col_index(c) for c in list_checking]
-for o in output:
-    print(o)
+#print(len(correct)==len(output))
+#print(correct==output)
