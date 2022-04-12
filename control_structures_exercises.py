@@ -109,7 +109,7 @@ def skipper(n):
 def get_input_2c():
     while True:
         user_in = input("2c. Enter an odd number between 1 and 50: ")
-        if user_in.isnumeric() and bool(int(user_in)%2) and int(user_in) <= 50 and int(user_in) >= 1:
+        if user_in.isdigit() and bool(int(user_in)%2) and int(user_in) <= 50 and int(user_in) >= 1:
             skipper(int(user_in))
             break
         else:
@@ -179,6 +179,8 @@ def square_and_cube(n):
         print_msg += f"{str(x).ljust(max_length)}|{str(x**2).ljust(max_length)}|{str(x**3).ljust(max_length)}\n"
     print(print_msg)
 
+#can also use f"{:x}" which makes the space at least x long
+
 def get_input_4():
     while True:
         user_in = input("4. What number would you like to go up to? ")
@@ -204,6 +206,8 @@ def grader(n):
         print('Your grade is a B')
     elif n in range(87, 101):
         print('Your grade is a A')
+    else:
+        print("That is not a valid grade.")
 
 def get_input_5():
     while True:
@@ -280,8 +284,8 @@ def get_input_6(b_dictionary):
     while True:
         print(f"6. Valid genres are: {valid_genre}")
         user_in = input("Enter a valid genre: ")
-        if user_in in valid_genre:
-            print_by_genre(b_dictionary, user_in)
+        if user_in.lower() in valid_genre:
+            print_by_genre(b_dictionary, user_in.lower())
             user_in = input("Type n to stop, any key to continue: ")
             if user_in.lower()=='n':
                 break
