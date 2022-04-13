@@ -2,43 +2,65 @@
 def is_two(n):
     #check via the equality operator
     return n == 2 or n == '2'
-#be able to handle non numeric strings
-#print(is_two('2'))
-#print(is_two(2))
-#print(is_two('5'))
-#print(is_two(5))
+
+# print(is_two('2'))
+# print(is_two(2))
+# print(is_two('5'))
+# print(is_two(5))
 
 #2
 def is_vowel(char):
     #check via list inclusion
-    return char.lower() in ('a', 'e', 'i', 'o', 'u')
+    if type(char) == str:
+        return char.lower() in ('a', 'e', 'i', 'o', 'u')
+    else:
+        return False
 
-#print(is_vowel('B'))
+# print(is_vowel('B'))
+# print(is_vowel('a'))
+# print(is_vowel(4))
 
 #3.
 def is_consonant(char):
     #should not be a vowel, and also it should be alphabetic
-    return char not in ('a', 'e', 'i', 'o', 'u') and char.isalpha()
+    if type(char) == str:
+        return char not in ('a', 'e', 'i', 'o', 'u') and char.isalpha() and len(char)==1
+    else:
+        return False
 
-#print(is_consonant('5'))
+# print(is_consonant('d'))
+# print(is_consonant('5'))
+# print(is_consonant('aa'))
+# print(is_consonant(False))
 
 #4.
 def title_if_cons(chars):
     #check if the first letter is a consonant
-    if chars[0] not in ('a', 'e', 'i', 'o', 'u') and chars.isalpha():
-        #return the string in title case
-        return chars.title()
+    if type(chars) == str:
+        if chars[0] not in ('a', 'e', 'i', 'o', 'u') and chars.isalpha():
+            #return the string in title case
+            return chars.title()
+        else:
+            return chars
     else:
-        return chars
+        return "not a string"
 
-#print(title_if_cons("robert"))
+# print(title_if_cons("robert"))
+# print(title_if_cons("obert"))
+# print(title_if_cons(False))
 
 #if I can use above functions.
 def title_if_cons_alt(chars):
+    if type(chars)!=str:
+        return None
     if is_consonant(chars[0]):
         return chars.title()
     else:
         return chars
+
+# print(title_if_cons_alt("robert"))
+# print(title_if_cons_alt("obert"))
+# print(title_if_cons_alt(False))
 
 #if the string has multiple words seperated by spaces
 def title_if_cons_alt_2(chars):
@@ -51,7 +73,8 @@ def title_if_cons_alt_2(chars):
             return_list.append(w)
     return ' '.join(return_list)
 
-#print(title_if_cons_alt_2('robert obert'))
+# print(title_if_cons_alt_2('robert obert'))
+# print(title_if_cons_alt_2('obert robert'))
 
 #5.
 def calculate_tip(tip, bill):
@@ -60,6 +83,8 @@ def calculate_tip(tip, bill):
         return bill*tip
     else:
         return "invalid tip"
+
+# print(calculate_tip(0.20,120))
 
 #6.
 def apply_discount(price, discount):
@@ -70,13 +95,13 @@ def apply_discount(price, discount):
 def handle_commas(num_string):
     #make a list of all chars that are not commas
     #join this list into a string and cast to float type
-    return float(''.join([c for c in num_string if c != ',']))
+    return float(''.join([c for c in num_string if c != ',' and c.isdigit()]))
 
 #this is a better way
 def handle_commas_alt(num_string):
     return float(num_string.replace(',', ''))
 
-#print(handle_commas_alt('1,00,,,,,,,,,0'))
+#print(handle_commas('1,,,,66as8'))
 
 #8.
 def get_letter_grade(grade):
@@ -96,9 +121,13 @@ def get_letter_grade(grade):
 def remove_vowels(word):
     #make a list of all chars that are not vowels
     #join the list into a string
-    return ''.join([c for c in word if c.lower() not in ('a', 'e', 'i', 'o', 'u')])
+    if type(word) != str:
+        return None
+    else:
+        return ''.join([c for c in word if c.lower() not in ('a', 'e', 'i', 'o', 'u')])
 
-#print(remove_vowels('SPONGEBOB'))
+# print(remove_vowels('SPONgebob'))
+# print(remove_vowels(False))
 
 #10
 def normalize_name(word):
@@ -108,13 +137,17 @@ def normalize_name(word):
     word = word.strip().lower().replace(' ', '_')
     return word
 
-#print(normalize_name('    @franky  $rios   '))
+# print(normalize_name('    @franky  $rios   '))
 
 #11
 def cumulative_sum(num_list):
     #make a list
     #each item in the list is a partial sum of the list
     return [sum(num_list[:n]) for n in range(1,len(num_list)+1)]
+
+# print(cumulative_sum([1,1,1,1,1,1]))
+# print(cumulative_sum([2,2,2,2,2,2]))
+# print(cumulative_sum(list(range(10))))
 
 #Bonus 1
 def twelveto24(time_string):
