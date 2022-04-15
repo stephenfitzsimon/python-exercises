@@ -101,7 +101,7 @@ def handle_commas(num_string):
 def handle_commas_alt(num_string):
     return float(num_string.replace(',', ''))
 
-#print(handle_commas('1,,,,66as8'))
+# print(handle_commas('1,,,,66as8'))
 
 #8.
 def get_letter_grade(grade):
@@ -165,8 +165,8 @@ def twelveto24(time_string):
     #use map to cast the ints to str
     return ':'.join(map(str, time_list_split[:2]))
 
-#print(twelveto24("10:25pm"))
-#print(twelveto24("12:50am"))
+# print(twelveto24("10:25pm"))
+# print(twelveto24("12:50am"))
 
 #Bonus 1 part ii
 def twentyfourto12(time_string):
@@ -188,8 +188,8 @@ def twentyfourto12(time_string):
     #return as a string
     return f"{time_list_split[0]}:{time_list_split[1]}{time_list_split[2]}"
 
-#print(twentyfourto12("23:55"))
-#print(twentyfourto12("0:50"))
+# print(twentyfourto12("23:55"))
+# print(twentyfourto12("0:50"))
 
 #Bonus 2 this should work?
 def col_index(cols_string):
@@ -209,22 +209,22 @@ def col_index(cols_string):
     #print(f"{cols_string} = {sum}")
     return sum
 
-#print(col_index('A'))
-#print(col_index('Z'))
-#print(col_index('AA'))
-#print(col_index('ZZ'))
-#print(col_index('AAA'))
-#print(col_index('ZZZ'))
-#print(col_index('AAAA'))
+# print(col_index('A'))
+# print(col_index('Z'))
+# print(col_index('AA'))
+# print(col_index('ZZ'))
+# print(col_index('AAA'))
+# print(col_index('ZZZ'))
+# print(col_index('AAAA'))
 
     
 
-alphabet_list = [chr(c+65) for c in range(26)]
-#list to check
-combos_2 = alphabet_list + [c+d for c in alphabet_list for d in alphabet_list]
-combos_3 = combos_2 + [c+d+e for c in alphabet_list for d in alphabet_list for e in alphabet_list]
-list_checking = combos_3
-correct = [x for x in range(1,len(list_checking)+1)]
-output = [col_index(c) for c in list_checking]
-#print(len(correct)==len(output))
-#print(correct==output)
+# alphabet_list = [chr(c+65) for c in range(26)]
+# #list to check
+# combos_2 = alphabet_list + [c+d for c in alphabet_list for d in alphabet_list]
+# combos_3 = combos_2 + [c+d+e for c in alphabet_list for d in alphabet_list for e in alphabet_list]
+# list_checking = combos_3
+# correct = [x for x in range(1,len(list_checking)+1)]
+# output = [col_index(c) for c in list_checking]
+# #print(len(correct)==len(output))
+# #print(correct==output)
